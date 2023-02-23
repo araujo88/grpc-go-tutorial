@@ -32,6 +32,19 @@ clean-sum:
 	rm -rf bin/sum/client
 	rm -rf bin/sum/server
 
+proto-primes:
+	protoc -Iprimes/proto --go_out=. --go_opt=module=github.com/araujo88/grpc-go-tutorial --go-grpc_out=. --go-grpc_opt=module=github.com/araujo88/grpc-go-tutorial primes/proto/primes.proto
+
+build-primes:
+	protoc -Iprimes/proto --go_out=. --go_opt=module=github.com/araujo88/grpc-go-tutorial --go-grpc_out=. --go-grpc_opt=module=github.com/araujo88/grpc-go-tutorial primes/proto/primes.proto
+	go build -o bin/primes/server ./primes/server
+	go build -o bin/primes/client ./primes/client
+
+clean-primes:
+	rm -rf primes/proto/*.pb.go
+	rm -rf bin/primes/client
+	rm -rf bin/primes/server
+
 clean:
 	rm -rf greet/proto/*.pb.go
 	rm -rf bin/greet/client
