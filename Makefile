@@ -45,6 +45,15 @@ clean-primes:
 	rm -rf bin/primes/client
 	rm -rf bin/primes/server
 
+proto-blog:
+	protoc -Iblog/proto --go_out=. --go_opt=module=github.com/araujo88/grpc-go-tutorial --go-grpc_out=. --go-grpc_opt=module=github.com/araujo88/grpc-go-tutorial blog/proto/blog.proto
+
+build-blog:
+	protoc -Iblog/proto --go_out=. --go_opt=module=github.com/araujo88/grpc-go-tutorial --go-grpc_out=. --go-grpc_opt=module=github.com/araujo88/grpc-go-tutorial blog/proto/blog.proto
+
+clean-blog:
+	rm -rf blog/proto/*.pb.go
+
 clean:
 	rm -rf greet/proto/*.pb.go
 	rm -rf bin/greet/client
